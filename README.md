@@ -20,7 +20,7 @@ Build a microservice to change a JSON file every 15 seconds with random numbers 
 - [x] Write JSON file
 - [x] Read JSON file
 - [x] Display value of wind and water to HTML page
-- [ ] Display status of wind and water to HTML page
+- [x] Display status of wind and water to HTML page
 - [ ] Apply css to HTML page
 
 ## Rules
