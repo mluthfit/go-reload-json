@@ -21,7 +21,7 @@ Build a microservice to change a JSON file every 15 seconds with random numbers 
 - [x] Read JSON file
 - [x] Display value of wind and water to HTML page
 - [x] Display status of wind and water to HTML page
-- [ ] Apply css to HTML page
+- [x] Apply css to HTML page
 
 ## Rules
 
@@ -36,7 +36,7 @@ Build a microservice to change a JSON file every 15 seconds with random numbers 
 
 ## Getting Started
 
-This project developed using `go 1.19`.
+This project developed using `go 1.19.2`.
 
 To start running this project locally, you must follow these steps:
 
