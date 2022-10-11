@@ -4,11 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="5">
+  <meta http-equiv="refresh" content="15">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
   <title>Auto Reload JSON with Go</title>
 </head>
 <body>
-  <h1>{{.WaterValue}}, {{.WaterStatus}}</h1>
-  <h1>{{.WindValue}}, {{.WindStatus}}</h1>
+  <div class="container">
+    <h1>Weather</h1>
+    <div class="information">
+      <div class="list">
+        <span class="name">Water</span>
+        <span class="value">{{ .water.Value }}</span>
+        <span class="status {{ .water.Class }}">{{ .water.Status }}</span>
+      </div>
+      <div class="list">
+        <span class="name">Wind</span>
+        <span class="value">{{ .wind.Value }}</span>
+        <span class="status {{ .wind.Class }}">{{ .wind.Status }}</span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

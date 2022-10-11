@@ -12,6 +12,6 @@ func StartServer(port string) {
 		http.StripPrefix("/static/",
 			http.FileServer(http.Dir("views"))))
 
-	fmt.Printf("Server started at http://localhost:%s\n", port)
+	fmt.Printf("Server started at http://localhost%s\n", port)
 	http.ListenAndServe(port, nil)
 }

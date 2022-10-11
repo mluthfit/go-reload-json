@@ -8,3 +8,9 @@ type Status struct {
 type Response struct {
 	Status Status `json:"status"`
 }
+
+type Template struct {
+	Value  int
+	Status string
+	Class  string
+}

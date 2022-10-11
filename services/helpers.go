@@ -45,7 +45,7 @@ func readJson(res *Response, path string) error {
 	return nil
 }
 
-func executeHtml(w http.ResponseWriter, path string, data map[string]string) error {
+func executeHtml(w http.ResponseWriter, path string, data map[string]Template) error {
 	var template, err = template.ParseFiles(path)
 	if err != nil {
 		return err
@@ -59,28 +59,53 @@ func executeHtml(w http.ResponseWriter, path string, data map[string]string) err
 	return nil
 }
 
-func windRules(lang Lang, value int) (result string) {
-	switch {
-	case value > 15:
-		result = lang.GetStatusLang("danger")
-	case value > 6:
-		result = lang.GetStatusLang("standby")
-	default:
-		result = lang.GetStatusLang("safe")
+func waterRules(value int) string {
+	var status = "safe"
+
+	if value > 8 {
+		status = "danger"
+	} else if value > 5 {
+		status = "standby"
 	}
 
-	return
+	return status
 }
 
-func waterRules(lang Lang, value int) (result string) {
-	switch {
-	case value > 8:
-		result = lang.GetStatusLang("danger")
-	case value > 5:
-		result = lang.GetStatusLang("standby")
-	default:
-		result = lang.GetStatusLang("safe")
+func windRules(value int) string {
+	var status = "safe"
+
+	if value > 15 {
+		status = "danger"
+	} else if value > 6 {
+		status = "standby"
 	}
 
-	return
+	return status
+}
+
+func statusRules(category string, value int) (status string) {
+	if category == "water" {
+		return waterRules(value)
+	}
+
+	return windRules(value)
+}
+
+func getTemplateData(lang Lang, res Response) (Template, Template) {
+	var statusWater = statusRules("water", res.Status.Water)
+	var statusWind = statusRules("wind", res.Status.Wind)
+
+	var water = Template{
+		Value:  res.Status.Water,
+		Status: lang.GetStatusLang(statusWater),
+		Class:  statusWater,
+	}
+
+	var wind = Template{
+		Value:  res.Status.Wind,
+		Status: lang.GetStatusLang(statusWind),
+		Class:  statusWind,
+	}
+
+	return water, wind
 }

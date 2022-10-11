@@ -4,23 +4,18 @@ import (
 	"fmt"
 	"net/http"
 	"path"
-	"strconv"
 )
 
 func IconHandler(w http.ResponseWriter, r *http.Request) {}
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	var err error
-
 	var lang = Lang{Source: "id"}
 	var pathJson = path.Join("services", "data.json")
-	var pathHtml = path.Join("views", "index.html")
-	var waterValue = getRandomNumberInt(1, 100)
-	var windValue = getRandomNumberInt(1, 100)
 
 	var res = Response{
 		Status{
-			Water: waterValue,
-			Wind:  windValue,
+			Water: getRandomNumberInt(1, 100),
+			Wind:  getRandomNumberInt(1, 100),
 		},
 	}
 
@@ -36,15 +31,14 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var data = map[string]string{
-		"WaterValue":  strconv.Itoa(res.Status.Water),
-		"WaterStatus": waterRules(lang, res.Status.Water),
-		"WindValue":   strconv.Itoa(res.Status.Wind),
-		"WindStatus":  windRules(lang, res.Status.Wind),
+	var water, wind = getTemplateData(lang, res)
+	var data = map[string]Template{
+		"water": water,
+		"wind":  wind,
 	}
 
 	fmt.Println(data)
-	err = executeHtml(w, pathHtml, data)
+	err = executeHtml(w, path.Join("views", "index.html"), data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

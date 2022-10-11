@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://cdn.pixabay.com/photo/2018/05/26/01/48/thunderstorm-3430471__340.jpg');
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container h1 {
+  font-size: 4rem;
+  color: #fff;
+  margin: 5rem 0;
+}
+
+.information {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.list {
+  width: 200px;
+  text-align: center;
+}
+
+.list span {
+  display: block;
+  color: #fff;
+}
+
+.list .name {
+  font-size: 2rem;
+}
+
+.list .value {
+  font-size: 6.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.list .status {
+  display: inline-block;
+  padding: 0.5rem 1.3rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+
+.safe {
+  background-color: green;
+}
+
+.standby {
+  background-color: orange;
+}
+
+.danger {
+  background-color: red;
+}
