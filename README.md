@@ -13,6 +13,16 @@ Build a microservice to change a JSON file every 15 seconds with random numbers 
 }
 ```
 
+## Todo
+
+- [x] Reload page every 15 seconds
+- [x] Build handler
+- [x] Write JSON file
+- [x] Read JSON file
+- [x] Display value of wind and water to HTML page
+- [ ] Display status of wind and water to HTML page
+- [ ] Apply css to HTML page
+
 ## Rules
 
 - If the water is below 5 then the status is safe
