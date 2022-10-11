@@ -5,7 +5,6 @@
 }
 
 body {
-  height: 100vh;
   font-family: 'Roboto', sans-serif;
   background-size: cover;
   background-repeat: no-repeat;
@@ -14,21 +13,15 @@ body {
 }
 
 .container {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.container h1 {
-  font-size: 4rem;
-  color: #fff;
-  margin: 5rem 0;
-}
-
 .information {
-  margin-top: 2rem;
   display: flex;
-  gap: 2rem;
+  padding: 5rem;
 }
 
 .list {
@@ -38,7 +31,7 @@ body {
 
 .list span {
   display: block;
-  color: #fff;
+  color: white;
 }
 
 .list .name {
