@@ -57,3 +57,5 @@ Then, start the server.
 ```
 > go run main.go
 ```
+
+Last, open your browser and go to `localhost:8080`.
