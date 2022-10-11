@@ -45,16 +45,42 @@ func readJson(res *Response, path string) error {
 	return nil
 }
 
-func executeHtml(w http.ResponseWriter, path string, status Status) error {
+func executeHtml(w http.ResponseWriter, path string, data map[string]string) error {
 	var template, err = template.ParseFiles(path)
 	if err != nil {
 		return err
 	}
 
-	err = template.Execute(w, status)
+	err = template.Execute(w, data)
 	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func windRules(lang Lang, value int) (result string) {
+	switch {
+	case value > 15:
+		result = lang.GetStatusLang("danger")
+	case value > 6:
+		result = lang.GetStatusLang("standby")
+	default:
+		result = lang.GetStatusLang("safe")
+	}
+
+	return
+}
+
+func waterRules(lang Lang, value int) (result string) {
+	switch {
+	case value > 8:
+		result = lang.GetStatusLang("danger")
+	case value > 5:
+		result = lang.GetStatusLang("standby")
+	default:
+		result = lang.GetStatusLang("safe")
+	}
+
+	return
 }
